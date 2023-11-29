@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 58667c89b43eb47dda15936c390e21ad
+  productGUID: 33ca58a023c944f02a1642d7578456a5
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Apocalypse SAM
+  productName: Apocalypse Sam
   defaultCursor:
     fileID: 0
   cursorHotspot:
@@ -676,14 +676,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Apocalypse SAM
+  metroPackageName: Apocalypse Sam
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0
-  metroApplicationDescription: Apocalypse SAM
+  metroApplicationDescription: Apocalypse Sam
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -760,10 +760,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: f4020bc4-00cb-436b-a348-c113611ecf2c
+  cloudProjectId: f84e39dc-5f14-425e-8e6c-cb8810efed39
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Apocalypse SAM
+  projectName: Apocalypse Sam
   organizationId: mathiasgh
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
