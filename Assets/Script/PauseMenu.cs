@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
 
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject settingsMenu;
 
     public bool activeEscape = false;
     void Update()
@@ -20,13 +21,14 @@ public class PauseMenu : MonoBehaviour
             else
             {
                 pauseMenu.SetActive(false);
+                settingsMenu.SetActive(false);
                 activeEscape = false;
             }
         }
     }
     public void Home()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(0);
     }
 
     public void Pause()
@@ -43,5 +45,10 @@ public class PauseMenu : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Parameters()
+    {
+        settingsMenu.SetActive(true);
     }
 }
