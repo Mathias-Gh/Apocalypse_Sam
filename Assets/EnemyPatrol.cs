@@ -6,6 +6,7 @@ public class EnemyPatrol : MonoBehaviour
     public float speed;
     public Transform[] waypoints;
 
+    public SpriteRenderer graphics;
     private Transform target;
     private int destPoint = 0;
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class EnemyPatrol : MonoBehaviour
         {
             destPoint = (destPoint + 1) % waypoints.Length;
             target = waypoints[destPoint];
+            graphics.flipX = !graphics.flipX;
         }
     }
 }
