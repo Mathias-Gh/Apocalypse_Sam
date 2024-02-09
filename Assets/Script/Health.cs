@@ -28,6 +28,5 @@ public class Health : MonoBehaviour
             currentHealth = maxHealth;
         }
     }
-
-   
+    
 }
