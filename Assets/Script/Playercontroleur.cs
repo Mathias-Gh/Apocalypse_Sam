@@ -4,11 +4,30 @@ using UnityEngine;
 
 public class Playercontroleur : MonoBehaviour
 {
+
+  [Header("Component")]
    public Rigidbody2D rb;
    public float Vitesse;
+   public int currentHealth;
+   public int maxHealth;
+
    Vector2 mouvement;
+
+  [Header("Stat")]
+  [SerializeField]
    public Animator animator;
 
+   public static Playercontroleur instance;
+
+   public void Awake()
+   {
+    instance = this;
+   }
+   void Start (){
+    currentHealth = maxHealth;
+    rb = GetComponent<Rigidbody2D>();
+    animator = GetComponent<Animator>();
+   }
     // Update is called once per frame
     void Update()
     {
