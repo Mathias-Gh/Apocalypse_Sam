@@ -15,7 +15,6 @@ public class EnemyPatrol : MonoBehaviour
         target = waypoints[0];
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 dir = target.position - transform.position;
@@ -27,6 +26,15 @@ public class EnemyPatrol : MonoBehaviour
             destPoint = (destPoint + 1) % waypoints.Length;
             target = waypoints[destPoint];
             graphics.flipX = !graphics.flipX;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.CompareTag("Player"))
+        {
+            PlayerHealth playerHealth = collision.transform.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(20);
         }
     }
 }

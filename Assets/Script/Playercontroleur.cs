@@ -8,8 +8,6 @@ public class Playercontroleur : MonoBehaviour
   [Header("Component")]
    public Rigidbody2D rb;
    public float Vitesse;
-   public int currentHealth;
-   public int maxHealth;
 
    Vector2 mouvement;
 
@@ -24,7 +22,6 @@ public class Playercontroleur : MonoBehaviour
     instance = this;
    }
    void Start (){
-    currentHealth = maxHealth;
     rb = GetComponent<Rigidbody2D>();
     animator = GetComponent<Animator>();
    }
