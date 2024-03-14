@@ -5,37 +5,49 @@ using UnityEngine;
 public class Playercontroleur : MonoBehaviour
 {
 
-  [Header("Component")]
-   public Rigidbody2D rb;
-   public float Vitesse;
+    [Header("Component")]
+    public Rigidbody2D rb;
+    public float Vitesse;
 
-   Vector2 mouvement;
+    Vector2 mouvement;
 
-  [Header("Stat")]
-  [SerializeField]
-   public Animator animator;
+    [Header("Stat")]
+    [SerializeField]
 
-   public static Playercontroleur instance;
+    [Header("Attack")]
+    private float attackTime;
+    [SerializeField] float timeBetweenAttack;
 
-   public void Awake()
-   {
-    instance = this;
-   }
-   void Start (){
-    rb = GetComponent<Rigidbody2D>();
-    animator = GetComponent<Animator>();
-   }
+
+    public Animator animator;
+
+    public static Playercontroleur instance;
+
+
+    public void Awake()
+    {
+        instance = this;
+    }
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
-      mouvement.x = Input.GetAxisRaw("Horizontal");
-      mouvement.y = Input.GetAxisRaw("Vertical");
+        mouvement.x = Input.GetAxisRaw("Horizontal");
+        mouvement.y = Input.GetAxisRaw("Vertical");
 
-      animator.SetFloat("Horizontal", mouvement.x);
-      animator.SetFloat("Vertical", mouvement.y);
-      animator.SetFloat("Speed", mouvement.magnitude);
+        animator.SetFloat("Horizontal", mouvement.x);
+        animator.SetFloat("Vertical", mouvement.y);
+        animator.SetFloat("Speed", mouvement.magnitude);
 
-      rb.MovePosition(rb.position + mouvement * Vitesse * Time.deltaTime);
+        rb.MovePosition(rb.position + mouvement * Vitesse * Time.deltaTime);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger("attack");
+        }
     }
 }
- 
