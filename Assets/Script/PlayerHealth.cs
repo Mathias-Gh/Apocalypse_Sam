@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-
     public HealthBar healthBar;
 
     void Start()
@@ -15,10 +15,13 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.H)){
+        // Cette partie est juste pour les tests, vous pouvez la retirer plus tard
+        if (Input.GetKeyDown(KeyCode.H))
+        {
             TakeDamage(20);
         }
     }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -26,8 +29,13 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            //Animation of death
-            //Death screen
+            Die();
         }
+    }
+
+    void Die()
+    {
+        // Chargement de la scène actuelle pour recommencer la partie
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
