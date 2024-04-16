@@ -17,6 +17,7 @@ public class Playercontroleur : MonoBehaviour
     [Header("Attack")]
     private float attackTime;
     [SerializeField] float timeBetweenAttack;
+    public CapsuleCollider2D playerCollider;
 
 
     public Animator animator;
@@ -26,8 +27,15 @@ public class Playercontroleur : MonoBehaviour
 
     public void Awake()
     {
+        if (instance != null) 
+        {
+            Debug.LogWarning("Il y a plus d'une instance de Playercontroleur dans la scène");
+            return;
+        }
+    
         instance = this;
     }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

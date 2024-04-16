@@ -7,6 +7,19 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
+    public static PlayerHealth instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("Il y a plus d'une instance de PlayerHealth dans la scène");
+            return;
+        }
+
+        instance = this;
+    }
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -22,6 +35,20 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void HealPlayer(int amount)
+    {
+        if((currentHealth + amount) > maxHealth) 
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth += amount;
+        }
+        
+        healthBar.SetHealth(currentHealth);
+    }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -30,12 +57,20 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            return;
         }
+
     }
+
 
     void Die()
     {
         // Chargement de la scène actuelle pour recommencer la partie
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Le joueur est éliminé");
+        Playercontroleur.instance.enabled = false;
+        Playercontroleur.instance.animator.SetTrigger("Die");
+        Playercontroleur.instance.rb.bodyType = RigidbodyType2D.Kinematic;
+        GameOverManager.instance.OnPlayerDeath();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
