@@ -1,10 +1,12 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
+
 
 public class GameOverManager : MonoBehaviour
 {
     public GameObject gameOverUI;
+    public float cooldownTime = 1.0f;
 
     public static GameOverManager instance;
 
@@ -21,24 +23,28 @@ public class GameOverManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
+        StartCoroutine(ShowGameOverAfterCooldown());
+    }
+
+    private IEnumerator ShowGameOverAfterCooldown()
+    {
+        yield return new WaitForSeconds(cooldownTime);
         gameOverUI.SetActive(true);
     }
 
     public void Restart()
     {
-        Debug.Log("GameOverMenu: " + "Restart [OK]");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Home()
     {
-        Debug.Log("GameOverMenu: " + "Home [OK]");
         SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
     {
-        Debug.Log("GameOverMenu: " + "QuitGame [OK]");
         Application.Quit();
     }
 }
+

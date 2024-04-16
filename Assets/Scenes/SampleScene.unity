@@ -8144,6 +8144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 103665299}
+  cooldownTime: 5
 --- !u!4 &1301949017
 Transform:
   m_ObjectHideFlags: 0
